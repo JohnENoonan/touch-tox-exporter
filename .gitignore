@@ -1,0 +1,5 @@
+# mac files
+*.DS_STORE
+
+# default release location
+release
