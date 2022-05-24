@@ -35,8 +35,6 @@ class ToxExporter:
 		self.ConvertExternalToLocal(copy)
 		self.RemoveDev(copy)
 
-
-
 		# export
 		self.SaveTox(copy)
 
@@ -48,6 +46,7 @@ class ToxExporter:
 		# write file
 		outComp.save(os.path.join(parent().par.Exportlocation.eval(), outComp.par.Modulename + ".tox"))
 		outComp.destroy()
+		# create popup so the user knows something happened
 		popup.par.Text = "Created tox \"{}\" at \"{}\"".format(self.module_name, os.path.abspath(parent().par.Exportlocation.eval()).replace('\\', '/'))
 		popup.par.Open.pulse()
 
