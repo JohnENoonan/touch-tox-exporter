@@ -12,6 +12,7 @@ The exporter can export any component. There are 3 steps:
 1. On the component you want to export, add the parameter `Modulename` which is the name of the exported tox. Note that this `Modulename` cannot be the same as the op's `name`.
 2. On the exporter set the parameters `Export > Target Op` to the comp to export and set the `Export > Export Location` to the folder you want the tox to be exported to. Note that it will overwrite any existing export.
 3. Press the `Export > Export` button. This will either produce a popup which will mark success or errors will be thrown. Be sure to check the textport.
+
 ![Exporter panel](./documentation/exporterPanel.png)
 
 ## License
