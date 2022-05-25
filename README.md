@@ -8,4 +8,4 @@ This project is incredibly heavily influenced by [Matthew Ragan's template tox r
 TODO
 
 ## License
-Project Title is open source software [licensed as MIT](./LICENSE).
+This project is open source software [licensed as MIT](./LICENSE).
