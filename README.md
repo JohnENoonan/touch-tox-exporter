@@ -6,3 +6,6 @@ This project is incredibly heavily influenced by [Matthew Ragan's template tox r
 
 ## Usage
 TODO
+
+## License
+Project Title is open source software [licensed as MIT](./LICENSE).
