@@ -14,20 +14,17 @@ class ToxExporter:
 	def ExportTox(self):
 		self.source_op = parent().par.Targetop.eval()
 		self.module_name = self.source_op.par.Modulename.eval()
-		print("Export tox from", self.source_op.name, "to", self.module_name)
+		print(f"Export tox from \"{self.source_op.name}\" to \"{self.module_name}\"")
 
 
 		# create copy
-		preexisting = op("/" + self.module_name)
-		print(preexisting)
+		root_path = os.path.dirname(parent().path)
+		preexisting = op(os.path.join(root_path, self.module_name))
 		if preexisting:
-			if "source" not in preexisting.tags:
-				preexisting.destroy()
-			else:
-				raise ValueError('The source base may not have the same name as the exported module name')
+			raise ValueError('The source base may not have the same name as the exported module name')
 
 
-		copy = op("/").copy(self.source_op)
+		copy = op(root_path).copy(self.source_op)
 		copy.name = self.module_name
 		copy.nodeX = parent().nodeX + 300
 
@@ -53,7 +50,6 @@ class ToxExporter:
 	def ConvertExternalToLocal(self, outComp):
 		for child in outComp.children:	
 			if child.family == "DAT":
-				print("Process DAT", child.name)
 				child.par.file = ""
 				child.par.syncfile = False
 
