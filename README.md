@@ -1,8 +1,10 @@
 # Touchdesigner Tox Exporter
 A repo used to externalize assets and export fully contained tox files.
 
-## Purpose
+## Inspiration
 This project is incredibly heavily influenced by [Matthew Ragan's template tox repo](https://github.com/raganmd/touchdesigner-template-tox-dev). I wanted a version of it that was more of exactly what I wanted and it was easier for me to do so with a new repo rather than a fork. 
+
+I love working in TouchDesigner but it is hard to reuse components and also have your assets be as transparent and externalized as possible. The purpose of this tool is to make working on discrete components easier. The desired workflow is to create a new project and either submodule in the tox exporter or simply drag in the released `ToxExporter.tox` file. Then when you are ready you can export the component you have created and it will always work when brought into any other TouchDesigner project.
 
 ## The Exporter
 This project is used to create self contained `.tox` files, and the result of this project is itself a `.tox` file. The operator `/exporter` is a component that can be used to export `tox`s including itself. If you just want to export your own `.tox` grab the `ToxExporter` from the `release` folder which can be brought into any touch file.
