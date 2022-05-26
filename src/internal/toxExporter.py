@@ -41,6 +41,8 @@ class ToxExporter:
 		# remove tags
 		outComp.tags = []
 		# write file
+		if not os.path.exists(parent().par.Exportlocation.eval()):
+			os.makedirs(parent().par.Exportlocation.eval())
 		outComp.save(os.path.join(parent().par.Exportlocation.eval(), outComp.par.Modulename + ".tox"))
 		outComp.destroy()
 		# create popup so the user knows something happened
@@ -50,8 +52,10 @@ class ToxExporter:
 	def ConvertExternalToLocal(self, outComp):
 		for child in outComp.children:	
 			if child.family == "DAT":
-				child.par.file = ""
-				child.par.syncfile = False
+				if child.par["file"]:
+					child.par.file = ""
+				if child.par["syncfile"]:
+					child.par.syncfile = False
 
 	def RemoveDev(self, outComp):
 		for child in outComp.children:	
