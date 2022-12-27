@@ -9,7 +9,7 @@ class ToxExporter:
 
 
 	def __init__(self):
-		pass
+		return
 
 	def ExportTox(self):
 		self.source_op = parent().par.Targetop.eval()
@@ -50,11 +50,14 @@ class ToxExporter:
 		popup.par.Open.pulse()
 
 	def ConvertExternalToLocal(self, outComp):
+		debug("convert to local")
 		for child in outComp.children:	
 			if child.family == "DAT":
-				if child.par["file"]:
+				print(child)
+				if child.par["file"] and child.par["file"].mode != ParMode.EXPRESSION:
+					print(child.par["file"].mode)
 					child.par.file = ""
-				if child.par["syncfile"]:
+				if child.par["syncfile"] and child.par["syncfile"].mode != ParMode.EXPRESSION:
 					child.par.syncfile = False
 
 	def RemoveDev(self, outComp):
