@@ -2,6 +2,7 @@
 
 """
 import os
+import warnings
 popup = op("popDialog")
 
 
@@ -14,6 +15,10 @@ class ToxExporter:
 	def ExportTox(self):
 		self.source_op = parent().par.Targetop.eval()
 		self.module_name = self.source_op.par.Modulename.eval()
+		legal_name = tdu.legalName(self.module_name) 
+		if legal_name != self.module_name:
+			warnings.warn(f"Warning: '{self.module_name}' is not a valid operator name and has been changed to '{legal_name}'")
+			self.module_name = legal_name
 		print(f"Export tox from \"{self.source_op.name}\" to \"{self.module_name}\"")
 
 
@@ -21,7 +26,7 @@ class ToxExporter:
 		root_path = os.path.dirname(parent().path)
 		preexisting = op(os.path.join(root_path, self.module_name))
 		if preexisting:
-			raise ValueError('The source base may not have the same name as the exported module name')
+			raise ValueError('The source base may not have the same name as the exported module name. Rename either the node or the Modulename parameter')
 
 
 		copy = op(root_path).copy(self.source_op)
